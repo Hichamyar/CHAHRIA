@@ -2,83 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 43 100% 95%;
-    --foreground: 43 100% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 43 100% 15%;
-    --primary: 43 100% 35%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 43 70% 85%;
-    --secondary-foreground: 43 100% 15%;
-    --muted: 43 30% 90%;
-    --muted-foreground: 43 10% 40%;
-    --accent: 43 100% 90%;
-    --accent-foreground: 43 100% 15%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 43 30% 85%;
-    --input: 43 30% 85%;
-    --ring: 43 100% 35%;
-    --radius: 0.5rem;
-  }
+/* Simple base styles */
+body {
+  background-color: #fffbeb;
+  color: #78350f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-@layer base {
-  body {
-    @apply bg-amber-50 text-amber-900;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
 }
 
-/* Custom styling */
+/* Simple utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .card {
-  @apply bg-white rounded-lg border border-amber-200 shadow-md overflow-hidden;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid #fcd34d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .card-header {
-  @apply p-4 bg-amber-100 border-b border-amber-200;
+  padding: 1rem;
+  background-color: #fef3c7;
+  border-bottom: 1px solid #fcd34d;
 }
 
 .card-body {
-  @apply p-6;
+  padding: 1.5rem;
 }
 
 .btn {
-  @apply px-4 py-2 rounded-md transition-colors duration-200;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .btn-primary {
-  @apply bg-amber-600 text-white hover:bg-amber-700;
+  background-color: #d97706;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #b45309;
 }
 
 .btn-secondary {
-  @apply bg-amber-200 text-amber-900 hover:bg-amber-300;
+  background-color: #fcd34d;
+  color: #78350f;
+}
+
+.btn-secondary:hover {
+  background-color: #fbbf24;
 }
 
 .btn-outline {
-  @apply border border-amber-600 text-amber-600 hover:bg-amber-100;
+  border: 1px solid #d97706;
+  color: #d97706;
+}
+
+.btn-outline:hover {
+  background-color: #fef3c7;
 }
 
 .nav-link {
-  @apply px-4 py-2 rounded-md hover:bg-amber-200 transition-colors duration-200;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: #fef3c7;
 }
 
 .nav-link.active {
-  @apply bg-amber-200 font-bold;
-}
-
-/* Form elements */
-.input {
-  @apply px-4 py-2 border border-amber-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-amber-500;
-}
-
-.label {
-  @apply block text-sm font-medium mb-1;
-}
-
-/* Ensure the main content is visible */
-main {
-  display: block;
-  min-height: 70vh;
+  background-color: #fef3c7;
+  font-weight: bold;
 }
