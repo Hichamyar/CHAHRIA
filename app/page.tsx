@@ -1,94 +1,75 @@
-"use client"
-
 import Link from "next/link"
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useFinanceStore } from "@/lib/finance-store"
-import { BookOpen, PiggyBank, Receipt } from "lucide-react"
+import { ArrowRight, PiggyBank, CreditCard, BarChart3 } from "lucide-react"
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
-  const { updateMonthlyData, getCurrentMonth } = useFinanceStore()
-
-  const currentMonth = getCurrentMonth()
-
-  useEffect(() => {
-    setMounted(true)
-    // Update monthly data when component mounts
-    updateMonthlyData(currentMonth)
-  }, [updateMonthlyData, currentMonth])
-
-  if (!mounted) {
-    return (
-      <div className="container mx-auto py-10 space-y-8">
-        <div className="h-20 bg-muted/30 animate-pulse rounded-lg"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="h-64 bg-muted/30 animate-pulse rounded-lg"></div>
-          <div className="h-64 bg-muted/30 animate-pulse rounded-lg"></div>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="container mx-auto py-10 space-y-8">
-      {/* Top Zone - Guide to Set Up */}
-      <Card className="w-full">
-        <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold">New to budgeting?</h2>
-              <p className="text-muted-foreground">
-                Follow our step-by-step guide to set up your finances efficiently.
-              </p>
-            </div>
-            <Link href="/setup-guide">
-              <Button size="lg" className="gap-2">
-                <BookOpen className="h-5 w-5" />
-                Guide to Set Up
-              </Button>
+    <div className="space-y-8">
+      <section className="card">
+        <div className="card-body text-center py-12">
+          <h2 className="text-4xl mb-4 font-mistal">Welcome to Your Financial Journey</h2>
+          <p className="text-xl mb-6 max-w-2xl mx-auto">
+            Track your expenses, manage your budget, and achieve your financial goals with our elegant finance tracker.
+          </p>
+          <Link href="/dashboard" className="btn btn-primary inline-flex items-center">
+            Get Started <ArrowRight className="ml-2" size={16} />
+          </Link>
+        </div>
+      </section>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="card">
+          <div className="card-header">
+            <h3 className="text-xl flex items-center font-mistal">
+              <CreditCard className="mr-2" /> Track Expenses
+            </h3>
+          </div>
+          <div className="card-body">
+            <p className="mb-4">Record and categorize your expenses to understand your spending habits.</p>
+            <Link href="/expenses" className="btn btn-outline">
+              View Expenses
             </Link>
           </div>
-        </CardContent>
-      </Card>
+        </div>
 
-      {/* Bottom Two Zones */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Determine Budgets */}
-        <Card className="h-full">
-          <CardHeader>
-            <CardTitle>Determine Budgets</CardTitle>
-            <CardDescription>Set up your budget categories and allocate funds.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col items-center justify-center space-y-4">
-            <PiggyBank className="h-16 w-16 text-primary" />
-            <p className="text-center text-muted-foreground">
-              Create budget categories and set spending limits to keep your finances on track.
-            </p>
-            <Link href="/budget">
-              <Button className="w-full">Manage Budgets</Button>
+        <div className="card">
+          <div className="card-header">
+            <h3 className="text-xl flex items-center font-mistal">
+              <PiggyBank className="mr-2" /> Manage Budget
+            </h3>
+          </div>
+          <div className="card-body">
+            <p className="mb-4">Set budgets for different categories and stay on track with your financial goals.</p>
+            <Link href="/budget" className="btn btn-outline">
+              View Budget
             </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        {/* Add Expenses */}
-        <Card className="h-full">
-          <CardHeader>
-            <CardTitle>Add Expenses</CardTitle>
-            <CardDescription>Track your spending by recording expenses.</CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col items-center justify-center space-y-4">
-            <Receipt className="h-16 w-16 text-primary" />
-            <p className="text-center text-muted-foreground">
-              Record your expenses to monitor your spending habits and stay within budget.
-            </p>
-            <Link href="/expenses">
-              <Button className="w-full">Add Expenses</Button>
+        <div className="card">
+          <div className="card-header">
+            <h3 className="text-xl flex items-center font-mistal">
+              <BarChart3 className="mr-2" /> View Reports
+            </h3>
+          </div>
+          <div className="card-body">
+            <p className="mb-4">Analyze your financial data with beautiful charts and insightful reports.</p>
+            <Link href="/reports" className="btn btn-outline">
+              View Reports
             </Link>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
+
+      <section className="card bg-amber-100">
+        <div className="card-body">
+          <h2 className="text-2xl mb-4 font-mistal">Financial Tip of the Day</h2>
+          <p className="italic">
+            "The habit of saving is itself an education; it fosters every virtue, teaches self-denial, cultivates the
+            sense of order, trains to forethought, and so broadens the mind."
+          </p>
+          <p className="text-right mt-2">— T.T. Munger</p>
+        </div>
+      </section>
     </div>
   )
 }

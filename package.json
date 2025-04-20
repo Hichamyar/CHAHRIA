@@ -60,7 +60,6 @@
     "zod": "^3.24.1",
     "immer": "latest",
     "use-sync-external-store": "latest",
-    "emoji-picker-react": "latest",
     "zustand": "latest"
   },
   "devDependencies": {
